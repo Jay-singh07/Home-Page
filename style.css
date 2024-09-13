@@ -1,0 +1,108 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Fullscreen sections */
+section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+}
+
+/* Landing section styling */
+.home {
+    background-color: whitesmoke; /* Davys Grey */
+    color: black;
+    text-align: center;
+}
+
+.home .content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.home button {
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 10px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    animation: neon-glow 3s ease-in-out infinite;
+}
+
+.home button:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+@keyframes neon-glow {
+    0% {
+        background-color: #ff69b4;
+        box-shadow: 0 0 10px #ff69b4;
+    }
+    25% {
+        background-color: #33ccff;
+        box-shadow: 0 0 10px #33ccff;
+    }
+    50% {
+        background-color: #ff5d41;
+        box-shadow: 0 0 10px #ff5d41;
+    }
+    75% {
+        background-color: #ff99cc;
+        box-shadow: 0 0 10px #ff99cc;
+    }
+    100% {
+        background-color: #ff69b4;
+        box-shadow: 0 0 10px #ff69b4;
+    }
+}
+
+
+/* Section 1 */
+.section1 {
+    background-color: #2E86AB; /* Blue NCS */
+    color: white;
+}
+
+/* Section 2 */
+.section2 {
+    background-color: #bebc45; /* Lemon Yellow Crayola */
+    color: #565554;
+}
+
+/* Section 3 */
+.section3 {
+    background-color: #f2c036; /* Cinnabar */
+    color: white;
+}
+
+/* Section 4 */
+.section4 {
+    background-color: #412eab; /* Blue NCS */
+    color: white;
+}
+
+/* Section 5 */
+.section5 {
+    background-color: #36f284; /* Cinnabar */
+    color: white;
+}
+
+/* Scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
