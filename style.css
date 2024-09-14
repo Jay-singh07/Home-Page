@@ -1,3 +1,4 @@
+
 /* General reset */
 * {
     margin: 0;
@@ -25,27 +26,60 @@ section {
     background-color: whitesmoke; /* Davys Grey */
     color: black;
     text-align: center;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.content{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+video{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; 
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay to enhance text contrast */
+    z-index: 1; /* Ensure it appears over the video */
+}
+.content1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* On top of the overlay */
+    text-align: center;
+    color: white;
 }
 
-.home .content h1 {
-    font-size: 3rem;
+h1 {
+    font-size: 59px;
     margin-bottom: 20px;
 }
 
 .home button {
-    padding: 10px 20px;
-    font-weight: bold;
-    font-size: 18px;
-    border-radius: 10px;
-    color: #fff;
-    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    color: white;
+    background: transparent;
+    border: 2px solid white; /* White border */
+    border-radius: 100px;
     cursor: pointer;
-    animation: neon-glow 3s ease-in-out infinite;
+    transition: all 0.3s, color 0.3s;
+    
 }
 
 .home button:hover {
     transform: scale(1.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in-out;
 }
 
 @keyframes neon-glow {
@@ -68,6 +102,42 @@ section {
     100% {
         background-color: #ff69b4;
         box-shadow: 0 0 10px #ff69b4;
+    }
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 475px) {
+    /* Adjust for mobile screen */
+    .content {
+        height: 100vh;
+    }
+
+    .content1 {
+        top: 40%;
+    }
+
+    h1 {
+        font-size: 39px;
+    }
+
+    .centered-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+
+    video .bgvideo1 {
+        opacity: 0;
+    }
+
+    video .bgvideo {
+        opacity: 1;
+    }
+
+    .home button {
+        padding: 10px 22px;
+        font-size: 12px;
+        font-weight: bold;
     }
 }
 

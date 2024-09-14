@@ -5,13 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>website structure</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <!-- Home page Section -->
     <section id="home" class="home">
         <div class="content">
-            <h1> There wil a be a video in the background that will play in loop. </h1>
-            <button id="exploreButton">Explore More</button>
+            <video id = "background-video" class="bgvideo1" autoplay loop muted >
+                <source id = "video-source" src="desktop_size.mp4" type="video/mp4">
+            </video>
+
+            <video id = "background-video" class="bgvideo" autoplay loop muted ></video>
+                <source id = "video-source" src="mobile_size.mp4" type="video/mp4">
+            </video>
+
+            
+
+               <!-- Dark overlay -->
+        <div class="overlay"></div>
+
+        <!-- Centered content: Text and Button -->
+        <div class="content1">
+            <h1>DHAROWAR</h1>
+            <a href="#section1"><button class="centered-btn">Explore</button></a>
+        </div>
+        <!-- <h1> There wil a be a video in the background that will play in loop. </h1> -->
         </div>
     </section>
 
@@ -45,6 +63,5 @@
         <p>Details is here...</p>
     </section>
 
-    <script src="script.js"></script>
 </body>
 </html>
