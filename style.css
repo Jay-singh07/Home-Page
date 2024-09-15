@@ -184,6 +184,8 @@ p {
     background-color: #ffffff; /* White background */
     padding: 20px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .media-grid {
@@ -193,6 +195,7 @@ p {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0;
+    gap: 20px;
 }
 
 .media-grid img, .media-grid video {
