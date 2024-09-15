@@ -167,9 +167,105 @@ p {
     transition: transform 0.3s ease-in-out;
 }
 
+/*HISTORICAL PLACES SECTION*/
+
+.historical-wrapper{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+} 
+
+.historical-section {
+    width: 100%;
+    background-color: #ffffff; /* White background */
+    padding: 20px;
+    text-align: center;
+}
+
+.media-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.media-grid img, .media-grid video {
+    width: 280px;  /* Increase the size of images and video */
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.text-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#historical-heading{
+    margin-top: 70px;
+    font-family: inter;
+    font-weight: 900; 
+    font-size: 40px;
+}
+
+#historical-text{
+    margin-top:20px;
+    font-family: poppins;
+    color: #666666;
+    font-size: 20px; /* Increased the text size */
+    margin-bottom: 30px;
+}
+
+.historical-btn {
+    background-color: #f26722;
+    color: #fff;
+    padding: 15px 40px; /* Made the button bigger */
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 18px; /* Bigger font size for the button */
+    transition: all 0.3s ease-in-out;
+    font-family: poppins;
+}
+
+.historical-btn:hover {
+    transform: scale(1.1);
+    background-color: #d35400;
+}
+
+.video-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+}
 
 
+.historical-video-btn {
+    position: absolute;
+    top: 42%;
+    left: 27%;
+    padding: 10px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 40px;
+    color: white;
+    text-decoration: none;
+    font-family: poppins;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.3s ease, color 0.3s ease;
+}
 
+.historical-video-btn:hover{
+    transform: scale(1.1);
+}
 
 
 
@@ -252,12 +348,6 @@ p {
 .section2 {
     background-color: #bebc45; /* Lemon Yellow Crayola */
     color: #565554;
-}
-
-/* Section 3 */
-.section3 {
-    background-color: #f2c036; /* Cinnabar */
-    color: white;
 }
 
 /* Section 4 */
