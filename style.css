@@ -84,6 +84,208 @@ h1 {
     transform: scale(1.1);
     transition: transform 0.3s ease-in-out;
 }
+/*section 1*/
+
+.section1 .div {
+    background-color: #ffffff;
+    width: 1355px;
+    height: 635px;
+    position: relative;
+  }
+  
+  .section1 .group {
+    position: absolute;
+    width: 550px;
+    height: 648px;
+    top: 0;
+    left: 759px;
+  }
+  
+  .section1 .overlap {
+    position: relative;
+    height: 648px;
+  }
+  
+  .section1 .india-map {
+    position: absolute;
+    width: 575px;
+    height: 635px;
+    top: 0;
+    left: 0px;
+    object-fit: cover;
+  }
+  
+  .section1 .group-2 {
+    position: absolute;
+    width: 152px;
+    height: 75px;
+    top: 119px;
+    left: -15px;
+  }
+  
+  .section1 .img {
+    position: absolute;
+    width: 88px;
+    height: 100px;
+    top: -28px;
+    left: 31px;
+  }
+
+  .section1 .group-2:hover {
+    transform: scale(1.04);
+    transition: 0.3s ease;
+  }
+  
+  .section1 .text-wrapper {
+    position: absolute;
+    width: 150px;
+    top: 53px;
+    left: 0;
+    /* font-family: "Inter-Medium", Helvetica; */
+    font-weight: 600;
+    color: #000000;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .section1 .tajmahal-wrapper {
+    position: absolute;
+    width: 137px;
+    height: 131px;
+    top: 71px;
+    left: 200px;
+  }
+  
+  .section1 .tajmahal {
+    position: absolute;
+    width: 114px;
+    height: 118px;
+    top: 10px;
+    left: 288px;
+  }
+  
+  .section1 .overlap-group {
+    position: relative;
+    width: 140px;
+    height: 78px;
+    top: 58px;
+    left: -35px;
+  }
+
+  .section1 .overlap-group:hover {
+    transform: scale(1.04);
+    transition: 0.3s ease;
+  }
+  
+  .section1 .text-wrapper-2 {
+    position: absolute;
+    width: 145px;
+    top: 132px;
+    left: 0;
+    /* font-family: "Inter-Medium", Helvetica; */
+    font-weight: 600;
+    color: #000000;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .section1 .india-gate {
+    position: absolute;
+    width: 114px;
+    height: 118px;
+    top: 350px;
+    left: 1px;
+    overflow: hidden;
+  }
+
+  .section1 .india-gate:hover {
+    transform: scale(1.04);
+    transition: 0.3s ease;
+  }
+
+  .section1 .overlap-2 {
+    position: relative;
+    width: 144px;
+    height: 98px;
+    top: 7px;
+    left: -10px;
+  }
+  
+  .section1 .text-wrapper-3 {
+    position: absolute;
+    width: 150px;
+    top: 90px;
+    left: -16px;
+    /* font-family: "Inter-Medium", Helvetica; */
+    font-weight: 600;
+    color: #000000;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+
+  
+  .content01 .text-wrapper-4 {
+    position: absolute;
+    top: 25px;
+    left: 17%;
+    font-weight: 700;
+    color: #000000;
+    font-size: 44px;
+
+  }
+  
+  .content01 .text-wrapper-5 {
+    position: absolute;
+    width: 90%;
+    top: 35%;
+    left: 5%;
+    font-weight: 500;
+    color: #5c5b5b;
+    font-size: 18px;
+  }
+
+  .text-wrapper:hover, .text-wrapper-2:hover, .text-wrapper-3:hover {
+    color: #ff4500;
+  }
+
+  .content01 {
+    position: absolute;
+    text-align: center;
+    width: 40%;
+    height: 60%;
+    left: 50px;
+    top: 95px;
+    border-radius: 30px;
+    box-shadow: 5px 6px 15px 1px rgb(184, 183, 183);
+  }
+
+  .explore {
+    font-family: poppins;
+    border: none;
+    border-radius: 12px;
+    width: 17%;
+    background-color: orangered;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    position: absolute;
+    bottom: 10%;
+    left: 43%;
+    cursor: pointer;
+    box-shadow: 3px 3px 8px 1px rgb(184, 183, 183);
+  }
+
+  .explore:hover {
+    transform: scale(1.1);
+    transition: 0.3s ease;
+  }
 
 #section2{
     background-color: white;
@@ -342,10 +544,6 @@ p {
 
 
 /* Section 1 */
-.section1 {
-    background-color: #2E86AB; /* Blue NCS */
-    color: white;
-}
 
 /* Section 2 */
 .section2 {
@@ -368,4 +566,27 @@ p {
 /* Scroll behavior */
 html {
     scroll-behavior: smooth;
+}
+.floatUpDown-animation{
+    animation: 3s ease-in-out 0s infinite alternate none running mover2;
+}
+@-webkit-keyframes mover2 {
+    0% { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+}
+@keyframes mover2 {
+    0% { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+}
+
+.floatUpDown-animation-left{
+    animation: 3s ease-in-out 0s infinite alternate none running mover1;
+}
+@-webkit-keyframes mover1 {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(10px); }
+}
+@keyframes mover1 {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(10px); }
 }
