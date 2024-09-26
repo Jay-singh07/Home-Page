@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Guidelines</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        @media screen and (max-width: 475px) {
+
+            .container {
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 350px;
+                text-align: center;
+            }
+    
+            h1 {
+                color: #333;font-size: 22px;font-weight: 800;
+            }
+    
+            ul {
+                text-align: left;
+                margin-bottom: 10px;
+                max-width:350px;
+
+            }
+    
+            li {
+                margin:0 10px 10px 0;
+                font-size: 15px;
+            }
+    
+            button {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                padding: 7px 12px;
+                font-size: 15px;
+                border-radius: 7px;
+                cursor: pointer;
+            }
+    
+            button:hover {
+                background-color: #45a049;
+            }
+    
+
+
+        }
+
+
+        @media screen and (max-width: 320px) {
+
+            .container {
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 200px;
+                text-align: center;
+            }
+    
+            h1 {
+                color: #333;font-size: 20px;font-weight: 800;
+            }
+    
+            ul {
+                text-align: left;
+                margin-bottom: 10px;
+                max-width:280px;
+
+            }
+    
+            li {
+                margin:0 10px 10px 0;
+                font-size: 12px;
+            }
+    
+            button {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                padding: 7px 12px;
+                font-size: 15px;
+                border-radius: 7px;
+                cursor: pointer;
+            }
+    
+            button:hover {
+                background-color: #45a049;
+            }
+    
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Quiz Guidelines</h1>
+        <ul>
+            <li>Ensure you have a stable internet connection.</li>
+            <li>Read each question carefully before answering.</li>
+            <li>You can go back to the previous question but no score will be assigned for reattempting the previous question.</li>
+            <li>There is a time limit of 30 minutes for this quiz.</li>
+            <li>Your score will be shown at the end of the quiz.</li>
+        </ul>
+        <button onclick="startQuiz()">Start Quiz</button>
+    </div>
+
+    <script>
+        function startQuiz() {
+            // Redirect to quiz page (replace 'quiz.html' with your actual quiz page)
+            window.location.href = "quiz.html";
+        }
+    </script>
+
+</body>
+
+</html>

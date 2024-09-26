@@ -24,3 +24,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Also check when the window is resized
     window.addEventListener("resize", checkScreenSize);
 });
+
+function startQuiz() {
+    // Redirect to quiz page (replace 'quiz.html' with your actual quiz page)
+    window.location.href = "copy.html";
+}

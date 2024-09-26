@@ -1,0 +1,381 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: antiquewhite;
+            height: 100%;
+            width: 100%;
+        }
+
+        a {font-size: 30px;
+            text-decoration: none;
+            color: rgb(7, 7, 7);margin:40px;
+
+        }
+        .active{
+            color:darkslategray;
+        }
+
+        .main-container {
+            background-color: aliceblue;
+            height: 700px;
+            width: 20%
+        }
+    </style>
+</head>
+
+<body>
+    <section class="main-container">
+        <div class="left">
+            <a href="overview">
+                <h5>Overview</h5>
+            </a>
+            <a href="cuisines">
+                <h5>Cuisines</h5>
+            </a>
+            <a href="heritage">
+                <h5>Heritage</h5>
+            </a>
+            <a href="culture">
+                <h5>Culture</h5>
+            </a>
+            <a href="quiz">
+                <h5>Quiz</h5>
+            </a>
+        </div>
+        <div class="right">
+
+        </div>
+    </section>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(45deg, #1c83f9e4, #8823f4d5);
+        }
+
+        .overlay {
+            text-align: center;
+            height: 200px;
+            width: 350px;
+            position: absolute;
+            top: 30%;
+            left: 35%;
+            display: none;
+            box-sizing: border-box;
+            background-size: cover;
+            background-color: #2a240ee4;
+            border-radius: 5px;
+        }
+
+        .overlay .message h4 {
+            color: rgb(232, 247, 247);
+        }
+
+        .overlay .message h5 {
+            color: rgb(125, 137, 137);
+        }
+
+        .final-btn {
+            margin: 30px 10px 0 10px;
+            padding: 10px 10px;
+            background-color: #28a745;
+            color: white;
+            display: inline;
+            border: none;
+            font-size: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .final-btn:hover {
+            background-color: #218838;
+        }
+
+        #final-submit {
+            background-color: #007BFF;
+        }
+
+        #submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .score-container {
+            position: absolute;
+            top: 10px;
+            right: 70px;
+        }
+
+        .next-btn {
+            margin-top: 10px;
+            padding: 10px 10px;
+            background-color: #28a745;
+            color: white;
+            display: inline;
+            border: none;
+            font-size: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .next-btn:hover {
+            background-color: #218838;
+        }
+
+        #submit-btn {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            font-size: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .emoji-container .emoji {
+            font-size: 50px;
+        }
+
+        .cracker {
+            position: absolute;
+            width: 100px;
+            display: none;
+        }
+
+        #cracker-left {
+            top: 20px;
+            left: 120px;
+        }
+
+        #cracker-right {
+            top: 20px;
+            right: 120px;
+        }
+
+        .show-cracker {
+            display: block;
+            animation: explodeCracker 2s ease-in-out infinite;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 15px;
+            background-color: #007BFF;
+            width: 0%;
+            border-radius: 5px;
+            transition: width 0.5s;
+        }
+
+        .timer {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quiz-container">
+        <div class="score-container">
+            <p>Score: <span id="score">0</span></p>
+        </div>
+        <h1>Interactive Quiz</h1>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div id="progress-fill" class="progress-bar-fill"></div>
+        </div>
+
+        <div class="timer" id="timer">Time left: <span id="time-left">60</span>s</div>
+
+        <!-- Crackers -->
+       
+
+        <div class="question-container">
+            <p id="question">What is the capital of France?</p>
+            <ul id="options">
+                <li><button class="option-btn" onclick="checkAnswer(0)">Berlin</button></li>
+                <li><button class="option-btn" onclick="checkAnswer(1)">Madrid</button></li>
+                <li><button class="option-btn" onclick="checkAnswer(2)">Paris</button></li>
+                <li><button class="option-btn" onclick="checkAnswer(3)">Rome</button></li>
+            </ul>
+        </div>
+
+        <button id="prev-btn" class="next-btn" onclick="prevQuestion()">Previous Question</button>
+        <button id="next-btn" class="next-btn" onclick="nextQuestion()">Next Question</button>
+        <button id="submit-btn" onclick="submitQuiz()">Submit</button>
+
+        <div class="emoji-container" id="emoji-container">
+            <span id="emoji"></span>
+        </div>
+    </div>
+
+    <script>
+        let score = 0;
+        let currentQuestion = 0;
+        let answered = false;
+        let timer;
+        let timeLeft = 60; // 60 seconds timer
+        const totalQuestions = 3;
+        const questions = [
+            {
+                question: "What is the capital of India?",
+                options: ["Rajasthan", "Haryana", "New Delhi", "Jaipur"],
+                correct: 2
+            },
+            {
+                question: "What is the largest planet in our solar system?",
+                options: ["Earth", "Jupiter", "Mars", "Saturn"],
+                correct: 1
+            },
+            {
+                question: "Who wrote 'Hamlet'?",
+                options: ["Charles Dickens", "J.K. Rowling", "William Shakespeare", "Mark Twain"],
+                correct: 2
+            }
+        ];
+
+        function startTimer() {
+            timer = setInterval(() => {
+                timeLeft--;
+                document.getElementById('time-left').textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+
+        function loadQuestion() {
+            answered = false;
+            const progressFill = document.getElementById('progress-fill');
+            progressFill.style.width = ((currentQuestion + 1) / totalQuestions) * 100 + '%';
+            document.getElementById('question').textContent = questions[currentQuestion].question;
+            const optionButtons = document.querySelectorAll('.option-btn');
+            optionButtons.forEach((button, index) => {
+                button.textContent = questions[currentQuestion].options[index];
+                button.style.backgroundColor = '#007BFF';
+                button.classList.remove('disabled');
+            });
+            updateButtonsVisibility();
+            hideEmoji();
+        }
+
+        function checkAnswer(selected) {
+            if (answered) return;
+            answered = true;
+            const correctAnswer = questions[currentQuestion].correct;
+            const optionButtons = document.querySelectorAll('.option-btn');
+            optionButtons.forEach((button, index) => {
+                button.classList.add('disabled');
+                if (index === selected) {
+                    button.style.backgroundColor = selected === correctAnswer ? 'green' : 'red';
+                    if (selected === correctAnswer) {
+                        score = score + 10;
+                        document.getElementById('score').textContent = score;
+                        showEmoji("🎉🥳", 5000);
+                    } else {
+                        showEmoji("😞", 5000);
+                    }
+                }
+            });
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions - 1) {
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                document.getElementById('submit-btn').style.display = 'block';
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        }
+
+        function updateButtonsVisibility() {
+            document.getElementById('next-btn').style.display = currentQuestion === totalQuestions - 1 ? 'none' : 'block';
+            document.getElementById('prev-btn').style.display = currentQuestion === 0 ? 'none' : 'block';
+        }
+
+        function submitQuiz() {
+            clearInterval(timer);
+            const crackerLeft = document.getElementById('cracker-left');
+            const crackerRight = document.getElementById('cracker-right');
+            if (score > 2) {
+                crackerLeft.classList.add('show-cracker');
+                crackerRight.classList.add('show-cracker');
+            }
+            document.getElementById('submit-btn').style.display = 'none';
+            alert('Quiz submitted! Your score: ' + score + '/' + totalQuestions);
+        }
+
+        function showEmoji(emoji, duration) {
+            const emojiContainer = document.getElementById('emoji-container');
+            emojiContainer.style.display = 'block';
+            document.getElementById('emoji').textContent = emoji;
+            setTimeout(hideEmoji, duration);
+        }
+
+        function hideEmoji() {
+            const emojiContainer = document.getElementById('emoji-container');
+            emojiContainer.style.display = 'none';
+            document.getElementById('emoji').textContent = '';
+        }
+
+        loadQuestion();
+        startTimer();
+    </script>
+</body>
+
+</html>

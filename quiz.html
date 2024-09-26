@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+
+        .overlay {
+            text-align: center;
+            height: 200px;
+            width: 350px;
+            position: absolute;
+            top: 30%;
+            left: 35%;
+            display: none;
+            box-sizing: border-box;
+            background-size: cover;
+            background-color: #2a240ee4;
+            border-radius: 5px;
+        }
+
+        .overlay .message {
+            text-align: center;
+        }
+
+        .message h4 {
+            color: rgb(232, 247, 247);
+        }
+
+        .message h5 {
+            color: rgb(125, 137, 137);
+        }
+
+        .check-ques {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .radio {
+            margin: 0 10px 0 10px;
+            height: 10px;
+            border: 1px solid black;
+            width: 10px;
+            border-radius: 50%;
+            background-color: #1db03d;
+        }
+
+        #radio1 {
+            background-color: red;
+        }
+
+        .check-ques span {
+            font-size: 15px;
+            color: #28a745
+        }
+
+        span:last-child {
+            color: red
+        }
+
+        .final-btn {
+            margin: 30px 10px 0 10px;
+            padding: 10px 10px;
+            background-color: #28a745;
+            color: white;
+            display: inline;
+            border: none;
+            font-size: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .final-btn:hover {
+            background-color: #218838;
+        }
+
+        #final-submit {
+            background-color: #007BFF;
+        }
+
+        #submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+
+
+
+        /* #overlay a {
+            position: absolute;
+            left: 92%;
+            top: 0%;
+            margin: 3px 0px 0px 3px;
+        }*/
+        ul {
+            list-style: none;
+        }
+
+        .quiz-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .quiz-container img {
+            height: 60px;
+            width: 150px;
+            margin-top: 0;
+        }
+
+        .question-container {
+            margin-bottom: 20px
+        }
+
+        .question-container ul {
+            margin-right: 40px;
+        }
+
+        .option-btn {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 14px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .option-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .score-container {
+            font-size: 20px;
+            font-weight: 700;
+            color: rgb(203, 173, 3);
+            position: absolute;
+            top: 10px;
+            right: 70px;
+        }
+
+        .score-container img {
+            height: 25px;
+            width: 25px;
+            position: absolute;
+            top: 20px;
+            right: 25px;
+        }
+
+        .score-container p {
+            background-color: aliceblue;
+            border: 1px solid aliceblue;
+        }
+
+        #score {
+            font-size: 20px;    
+            font-weight: 800;
+            color: rgb(241, 218, 86);
+        }
+
+        .next-btn {
+            margin-top: 10px;
+            padding: 10px 10px;
+            background-color: #28a745;
+            color: white;
+            display: inline;
+            border: none;
+            font-size: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .next-btn:hover {
+            background-color: #218838;
+        }
+
+        #submit-btn {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            font-size: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .emoji-container .emoji {
+            font-size: 50px;
+        }
+
+
+        /*.cracker {
+            position: absolute;
+            width: 100px;
+
+
+            display: none;
+            /* Hidden initially 
+        }
+
+
+       /* #cracker-left {
+            top: 20px;
+            left: 120px;
+            /* Initially off-screen 
+        }
+
+        #cracker-right {
+            top: 20px;
+            right: 120px;
+            /* Initially off-screen 
+        }
+
+
+
+
+        .show-cracker {
+            display: block;
+            animation: explodeCracker 2s ease-in-out infinite;
+            /* Infinite cracker animation 
+        }*/
+
+
+        @media screen and (max-width:475px) {
+            .quiz-container {
+                width: 250px;
+                padding: 40px;
+                margin-top: 0px;
+                height: 300px
+            }
+
+            .quiz-container p {
+                font-size: 14px;
+
+            }
+
+            .quiz-container img {
+                height: 40px;
+                width: 100px;
+                margin-top: 0;
+            }
+
+            .question-container {
+                margin-bottom: 15px;
+                font-size: 13px;
+            }
+
+            .score-container {
+                top: 20px;
+                right: 30px;
+            }
+
+            .score-container img {
+                height: 25px;
+                width: 25px;
+            }
+
+            #score {
+                font-size: 20px;
+
+            }
+
+            .next-btn {
+                margin-top: 5px;
+                font-size: 10px;
+                font-weight: 600;
+            }
+
+            #submit-btn {
+                margin-top: 5px;
+                font-size: 10px;
+            }
+
+            .option-btn {
+                padding: 8px;
+                width: 200px;
+                font-size: 12px;
+
+            }
+
+            .question-container ul {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+        }
+
+
+        @media screen and (max-width:320px) {
+            .quiz-container {
+                width: 200px;
+                padding: 40px;
+                margin-top: 0px;
+                height: 340px
+            }
+
+            .quiz-container p {
+                font-size: 12px;
+
+            }
+
+            .quiz-container img {
+                height: 40px;
+                width: 100px;
+                margin-top: 0;
+            }
+
+            .question-container {
+                margin-bottom: 15px;
+                font-size: 12px;
+            }
+
+            .score-container {
+                top: 40px;
+                right: 20px;
+            }
+
+            .score-container img {
+                height: 25px;
+                width: 25px;
+            }
+
+            #score {
+                font-size: 14px;position:absolute;top:20px;right:5px;
+                color: rgb(241, 218, 86);
+            }
+
+            .next-btn {
+                margin-top: 5px;
+                font-size: 10px;
+                font-weight: 600;
+            }
+
+            #submit-btn {
+                margin-top: 5px;
+                font-size: 10px;
+            }
+
+            .option-btn {
+                padding: 8px;
+                width: 200px;
+                font-size: 10px;
+
+            }
+
+            .question-container ul {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay" id="overlay">
+        <div class="message">
+            <h4>Confirmation for Submission !</h4>
+            <h5>Press Retry to again try the Quiz </h5>
+        </div>
+        <div class="check-ques">
+            <div class="radio"></div><span class="attempted-count"></span>
+            <div class="radio" id="radio1"></div><span class="non-attempted-count"></span>
+        </div>
+
+        <button id="retake-btn" class="final-btn" onclick="retryQuestion()">Retake Test</button>
+        <button id="final-submit" class="final-btn" onclick="submitQuestion()">Submit</button>
+
+    </div>
+    <div class="quiz-container">
+        <div class="score-container">
+            <p><img src="coin.png" alt=""> <span id="score"> 0 </span></p>
+        </div>
+        <img src="https://tse3.mm.bing.net/th?id=OIP.NS3qhSJqZG8HzW2OyCEtzAHaCr&pid=Api&P=0&h=180" alt="">
+        <!-- Crackers (hidden initially) -->
+
+
+        <div class="question-container">
+            <p id="question">What is the capital of France?</p>
+            <ul id="options">
+                <li><button class="option-btn" onclick="checkAnswer(0)">Berlin</button></li>
+                <li><button class="option-btn" onclick="checkAnswer(1)">Madrid</button></li>
+                <li><button class="option-btn" onclick="checkAnswer(2)">Paris</button></li>
+                <li><button class="option-btn" onclick="checkAnswer(3)">Rome</button></li>
+            </ul>
+        </div>
+
+        <button id="prev-btn" class="next-btn" onclick="prevQuestion()">Previous Question</button>
+        <button id="next-btn" class="next-btn" onclick="nextQuestion()">Next Question</button>
+        <button id="submit-btn" onclick="submitQuiz()">Submit</button>
+
+        <div class="emoji-container" id="emoji-container">
+            <span id="emoji"></span>
+        </div>
+        </di>
+
+        <script>
+            let score = 0;
+            let currentQuestion = 0;
+            let answered = false;
+            const questions = [
+                {
+                    question: "Who was the founder of the city of Jaipur, the capital of Rajasthan?",
+                    options: ["Maharana Pratap", "Raja Man Singh", "Maharaja Sawai Jai Singh II", "Rana Sanga"],
+                    correct: 2
+                },
+                {
+                    question: "In which year did the Battle of Haldighati, fought between Maharana Pratap and Akbar’s forces, take place?",
+                    options: ["1576", "1527", "1610", "1568"],
+                    correct: 0
+                },
+                {
+                    question: "Which fort in Rajasthan is known as the 'Golden Fort'?",
+                    options: ["Mehrangarh Fort", "Amer Fort", "Jaisalmer Fort", "Chittorgarh Fort"],
+                    correct: 2
+                },
+                {
+                    question: "Who was the Mughal emperor born in Fatehpur Sikri, Uttar Pradesh?",
+                    options: ["Babur", "Humayun", "Akbar", "Shah Jahan"],
+                    correct: 2
+                },
+                {
+                    question: "Which city in Uttar Pradesh is known as the birthplace of Lord Rama?",
+                    options: ["Ayodhya", "Mathura", "Varanasi", "Prayagraj"],
+                    correct: 0
+                },
+                {
+                    question: "The famous Ranthambore Fort is located in which district of Rajasthan?",
+                    options: ["Jaipur", "Sawai Madhopur", "Jodhpur", "Udaipur"],
+                    correct: 1
+                },
+                {
+                    question: "The first battle of Panipat was fought in 1526 between Babur and which ruler?",
+                    options: ["Ibrahim Lodi", "Rana Sanga", "Sher Shah Suri", "Hemu"],
+                    correct: 0
+                },
+                {
+                    question: "Who built the famous 'Hawa Mahal' in Jaipur, Rajasthan?",
+                    options: ["Maharaja Sawai Jai Singh I", "Maharaja Sawai Pratap Singh", "Maharana Bhupal Singh", "Raja Man Singh"],
+                    correct: 1
+                },
+                {
+                    question: "The city of Varanasi in Uttar Pradesh is famous for which historical event?",
+                    options: ["Battle of Buxar", "Formation of East India Company", "Ganga Aarti at Dashashwamedh Ghat", "Jallianwala Bagh Massacre"],
+                    correct: 2
+                },
+                {
+                    question: "Which Rajput ruler of Rajasthan defended Chittorgarh against the siege of Alauddin Khilji in 1303?",
+                    options: ["Rana Kumbha", "Rana Sanga", "Rana Ratan Singh", "Rao Jodha"],
+                    correct: 2
+                },
+
+                {
+                    question: "Who was the ruler of Mewar who initiated the construction of the Kumbhalgarh Fort in Rajasthan?",
+                    options: ["Rana Kumbha", "Maharana Pratap", "Rana Sanga", "Rao Jodha"],
+                    correct: 0
+                },
+                {
+                    question: "Which famous Mughal monument is located in Agra, Uttar Pradesh?",
+                    options: ["Qutub Minar", "Taj Mahal", "Red Fort", "Humayun's Tomb"],
+                    correct: 1
+                },
+                {
+                    question: "Which battle is regarded as the turning point in Indian history leading to British control over India and was fought near Buxar in present-day Uttar Pradesh?",
+                    options: ["Battle of Plassey", "Battle of Buxar", "Battle of Panipat", "Battle of Haldighati"],
+                    correct: 1
+                },
+                {
+                    question: "Who was the Rajput king of Marwar who founded the city of Jodhpur in Rajasthan?",
+                    options: ["Rana Sanga", "Maharana Pratap", "Raja Man Singh", "Rao Jodha"],
+                    correct: 3
+                },
+                {
+                    question: "Which famous fort in Rajasthan was built by Raja Man Singh I and is known for its artistic architecture?",
+                    options: ["Amber Fort", "Mehrangarh Fort", "Junagarh Fort", "Nahargarh Fort"],
+                    correct: 0
+                },
+                {
+                    question: "Which city in Uttar Pradesh is known for the Revolt of 1857, where Mangal Pandey started the first major uprising against British rule?",
+                    options: ["Meerut", "Lucknow", "Kanpur", "Jhansi"],
+                    correct: 0
+                },
+                {
+                    question: "Who built the Fatehpur Sikri, the city located near Agra, Uttar Pradesh?",
+                    options: ["Shah Jahan", "Akbar", "Aurangzeb", "Babur"],
+                    correct: 1
+                },
+                {
+                    question: "Which Rajasthani queen is famous for performing Jauhar during the siege of Chittorgarh by Alauddin Khilji?",
+                    options: ["Maharani Gayatri Devi", "Rani Lakshmibai", "Rani Padmini", "Maharani Jodha Bai"],
+                    correct: 2
+                },
+                {
+                    question: "The British Residency in Lucknow, Uttar Pradesh, was the site of a famous siege during which historical event?",
+                    options: ["Revolt of 1857", "Battle of Plassey", "Third Battle of Panipat", "Battle of Buxar"],
+                    correct: 0
+                },
+                {
+                    question: "Which ruler of Jaipur, Rajasthan, was known for his contribution to astronomy and built the Jantar Mantar observatory?",
+                    options: ["Maharana Pratap", "Rana Sanga", "Maharaja Sawai Jai Singh II", "Rao Jodha"],
+                    correct: 2
+                }
+
+
+            ];
+
+            let answeredQuestions = new Array(questions.length).fill(false); // Track answered questions
+
+
+            function loadQuestion() {
+
+                document.getElementById('question').textContent = questions[currentQuestion].question;
+                const optionButtons = document.querySelectorAll('.option-btn');
+                optionButtons.forEach((button, index) => {
+                    button.textContent = questions[currentQuestion].options[index];
+                    button.style.backgroundColor = '#007BFF'; // Reset background color
+                    button.classList.remove('disabled'); // Enable button
+                });
+
+                updateButtonsVisibility();
+                hideEmoji();
+                answered = false;
+            }
+
+            function checkAnswer(selected) {
+                if (answered) return; // Prevent multiple selections
+
+                answered = true;
+                const correctAnswer = questions[currentQuestion].correct;
+                const optionButtons = document.querySelectorAll('.option-btn');
+
+                optionButtons.forEach((button, index) => {
+                    button.classList.add('disabled'); // Disable all buttons after selection
+                    if (index === selected) {
+                        // Set background to green if correct, red if incorrect
+                        button.style.backgroundColor = selected === correctAnswer ? 'green' : 'red';
+                        if (selected === correctAnswer && !answeredQuestions[currentQuestion]) {
+                            score += 10;
+                            document.getElementById('score').textContent = score;
+                            showEmoji("🎉🥳", 5000);
+                            answeredQuestions[currentQuestion] = true; // Mark question as answered
+                        } else {
+                            showEmoji("😞", 5000); // Show sad emoji for 5 seconds
+                        }
+                    }
+                });
+                answered = true; // Mark current question as answered
+            }
+
+            function nextQuestion() {
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    loadQuestion();
+                } else {
+                    // Hide the next and prev buttons and show the submit button
+                    updateButtonsVisibility();
+                    showOverlay();
+                }
+            }
+
+            function prevQuestion() {
+                if (currentQuestion > 0) {
+                    currentQuestion--;  // Move to the previous question
+                    loadQuestion();
+                }
+            }
+            function showOverlay() {
+                const nonAttempted = answeredQuestions.filter(a => !a).length;
+
+                document.getElementByClassName('attempted-count').textContent = questions.length - nonAttempted;
+                document.getElementByClassName('non-attempted-count').textContent = nonAttempted;
+
+                document.getElementById('overlay').style.display = 'block';
+            }
+
+            function submitQuiz() {
+                document.getElementById('overlay').style.display = 'block';
+                // Show the overlay
+
+
+
+                // Play sound
+
+            }
+
+
+            function submitQuestion() {
+                document.getElementById('overlay').style.display = 'none';
+                // Hide the overlay
+                window.location.href = 'quiz-guidelines.html';
+
+            }
+
+            function retryQuestion() {
+                document.getElementById('overlay').style.display = 'none'; // Hide the overlay
+                resetQuiz(); // Reset the quiz
+            }
+
+            function updateButtonsVisibility() {
+                if (currentQuestion === questions.length - 1) {
+                    // Show submit button on the last question, hide next button
+                    document.getElementById('submit-btn').style.display = 'inline-block';
+                    document.getElementById('next-btn').style.display = 'none';
+                } else {
+                    document.getElementById('submit-btn').style.display = 'none';
+                    document.getElementById('next-btn').style.display = 'inline-block';
+                }
+
+                // Show or hide prev button based on current question
+                document.getElementById('prev-btn').style.display = currentQuestion === 0 ? 'none' : 'inline-block';
+            }
+
+            function resetQuiz() {
+                score = 0;
+                currentQuestion = 0;
+                answeredQuestions.fill(false); // Reset answered questions
+
+                document.getElementById('score').textContent = score;
+                loadQuestion();
+            }
+
+            function showEmoji(emoji, duration) {
+                const emojiContainer = document.getElementById('emoji-container');
+                const emojiElement = document.getElementById('emoji');
+                emojiElement.textContent = emoji;
+                emojiContainer.style.display = 'block';
+                setTimeout(() => {
+                    emojiContainer.style.display = 'none';
+                }, duration);
+            }
+
+            // Hide the emoji initially or when moving to the next question
+            function hideEmoji() {
+                document.getElementById('emoji-container').style.display = 'none';
+            }
+
+            // Load the first question when the page loads
+            loadQuestion();
+        </script>
+</body>
+
+</html>

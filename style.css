@@ -563,6 +563,42 @@ p {
     color: white;
 }
 
+.section6 .container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    text-align: center;
+}
+
+.section6 h1 {
+    color: #333;
+}
+
+.section6 ul {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.section6 li {
+    margin-bottom: 10px;
+}
+
+.section6 button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.section6 button:hover {
+    background-color: #45a049;
+}
+
 /* Scroll behavior */
 html {
     scroll-behavior: smooth;
